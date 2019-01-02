@@ -1,5 +1,7 @@
 package observatory
 
+case class StationId(stn: String, wban: String)
+
 /**
   * Introduced in Week 1. Represents a location on the globe.
   * @param lat Degrees of latitude, -90 ≤ lat ≤ 90

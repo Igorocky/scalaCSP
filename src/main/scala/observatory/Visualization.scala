@@ -22,7 +22,6 @@ object Visualization {
         val newClosestTemp = closestTemp match {
           case None => Some((dst, temp))
           case oldClosestTemp@Some((minDist, minDistTemp)) => if (minDist < dst) oldClosestTemp else Some((dst, temp))
-
         }
         val wiVal = wi(location, loc)
         (newClosestTemp, sumWi + wiVal, sumWiProd + wiVal*temp)

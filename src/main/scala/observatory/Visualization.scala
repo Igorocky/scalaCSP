@@ -34,7 +34,7 @@ object Visualization {
     }
   }
 
-  protected[observatory] def wi(l: Location, li: Location) = pow(dist(l,li), -2)
+  protected[observatory] def wi(l: Location, li: Location) = pow(dist(l,li), -6)
 
   protected[observatory] def dist(loc1: Location, loc2: Location): Double = {
     val f1 = toRadians(loc1.lat)
@@ -51,8 +51,7 @@ object Visualization {
     * @return The color that corresponds to `value`, according to the color scale defined by `points`
     */
   def interpolateColor(points: Iterable[(Temperature, Color)], value: Temperature): Color = {
-    val left = points.filter(_._1 < value)
-    val right = points.filter(_._1 > value)
+    val (left,right) = points.partition(_._1 < value)
     if (left.isEmpty) {
       points.minBy(_._1)._2
     } else if (right.isEmpty) {
